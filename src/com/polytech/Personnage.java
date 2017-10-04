@@ -10,6 +10,7 @@ public abstract class Personnage {
 	private int vitesse;
 	private int niveau;
 	private List<Arme> armesPersonnages = new ArrayList<Arme>();
+	private Equipement equipement;
 	
 	public String getNom() {
 		return nom;
@@ -49,6 +50,14 @@ public abstract class Personnage {
 
 	public void setArmesPersonnages(List<Arme> armesPersonnages) {		
 		this.armesPersonnages = armesPersonnages;
+	}
+
+	public Equipement getEquipement() {
+		return equipement;
+	}
+
+	public void setEquipement(Equipement equipement) {
+		this.equipement = equipement;
 	}
 
 	public Personnage() {
