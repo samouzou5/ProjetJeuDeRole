@@ -14,6 +14,7 @@ public class Main {
 		System.out.println("3.Quitter");
 		System.out.print("Votre choix : ");
 		String choix = s.nextLine();
+		s.nextLine();
 		int chiffre = -1;
 		try {
 			chiffre = Integer.parseInt(choix);
@@ -31,7 +32,8 @@ public class Main {
 		System.out.println("Voulez-vous rejouer? (Taper 1 pour oui 0 pour non) : ");
 		int choix_replay = -1;
 		try{
-			choix_replay = Integer.parseInt(s.nextLine());
+			choix_replay = s.nextInt();
+			s.nextLine();
 		}catch(Exception e){
 			System.out.println("Veuillez saisir un choix valide!");
 			System.out.println("\n");
@@ -62,7 +64,7 @@ public class Main {
 				break;
 			case 2:
 				System.out.println("Choisissez un personnage parmi la liste ci-dessous :");
-				//fin du jeu possibilité de recommencer
+				/*fin du jeu possibilité de recommencer*/
 				int repl = replay();
 				if(repl == 1){
 					afficherMenuPrincipal();
@@ -70,8 +72,7 @@ public class Main {
 					System.out.println("Merci d'avoir participé au jeu, au revoir!");
 					System.exit(0);
 				}
-				
-
+				break;
 			case 3:
 				System.out.println("Merci d'avoir participé au jeu, au revoir!");
 				System.exit(0);
