@@ -99,7 +99,6 @@ public class Main {
 	}
 	
 	public static void creerPersonnages() {
-
 	    // Création des Armes
 	       ArmeDistance arc = new ArmeDistance("Arc", 8, 10);
 	       ArmeDistance arbalete = new ArmeDistance("Arbalète", 6, 15);
