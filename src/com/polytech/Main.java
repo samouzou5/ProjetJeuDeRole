@@ -1,5 +1,7 @@
 package com.polytech;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -95,5 +97,96 @@ public class Main {
 			}
 		} while (!arret);
 	}
+	
+	public static void creerPersonnages() {
+
+	    // Création des Armes
+	       ArmeDistance arc = new ArmeDistance("Arc", 8, 10);
+	       ArmeDistance arbalete = new ArmeDistance("Arbalète", 6, 15);
+	       ArmeDistance couteaux = new ArmeDistance("Couteaux de lancer", 4, 5);
+
+	       ArmeLourde epee = new ArmeLourde("Épée", 3, 15);
+	       ArmeLourde hache = new ArmeLourde("Hache", 1, 15);
+	       ArmeLourde fleau = new ArmeLourde("Fleau", 2, 15);
+	       ArmeLourde dague = new ArmeLourde("Dague", 4, 4);
+
+	       ArmeMagique baton = new ArmeMagique("Bâton magique", 8, 10);
+	       ArmeMagique feu = new ArmeMagique("Boules de feu", 8, 10);
+	       ArmeMagique glace = new ArmeMagique("Boules de glace", 8, 10);
+
+
+	       // Création des Equipements
+	       Equipement bouclier = new Equipement("Bouclier", 0, 6);
+	       Equipement casque = new Equipement("Casque", 0, 5);
+	       Equipement cheval = new Equipement("Cheval", 5, 1);
+
+
+	       // Création des Personnages
+	       Mage gandalf = new Mage("Gandalf le Blanc", 100, 1, 1);
+	       Mage sarouman = new Mage("Sarouman le Gris", 100, 1, 1);
+
+	       Archer legolas = new Archer("Legolas", 100, 1, 1);
+	       Archer tauriel = new Archer("Tauriel", 100, 1, 1);
+
+	       Guerrier bilbo = new Guerrier("Bilbo", 100, 1, 1);
+	       Guerrier aragorn = new Guerrier("Aragorn", 100, 1, 1);
+	       
+	       // On associe les armes et équipements aux personnages
+	       gandalf.ajouterArme(baton);
+	       gandalf.ajouterArme(feu);
+	       gandalf.setEquipement(cheval);
+	       
+	       sarouman.ajouterArme(baton);
+	       sarouman.ajouterArme(glace);
+	       sarouman.setEquipement(bouclier);
+	       
+	       legolas.ajouterArme(arc);
+	       legolas.ajouterArme(couteaux);
+	       legolas.setEquipement(bouclier);
+	       
+	       tauriel.ajouterArme(arc);
+	       tauriel.ajouterArme(arbalete);
+	       tauriel.setEquipement(cheval);
+	       
+	       bilbo.ajouterArme(hache);
+	       bilbo.ajouterArme(dague);
+	       bilbo.setEquipement(bouclier);
+	       
+	       aragorn.ajouterArme(epee);
+	       aragorn.ajouterArme(dague);
+	       aragorn.setEquipement(cheval);
+	       
+	       
+	       // Création des listes
+	       List<Personnage> personnages = new ArrayList<Personnage>();
+	       personnages.add(gandalf);
+	       personnages.add(sarouman);
+	       personnages.add(legolas);
+	       personnages.add(tauriel);
+	       personnages.add(bilbo);
+	       personnages.add(aragorn);
+
+	       List<ArmeLourde> armesLourdes = new ArrayList<ArmeLourde>();
+	       armesLourdes.add(epee);
+	       armesLourdes.add(hache);
+	       armesLourdes.add(fleau);
+	       armesLourdes.add(dague);
+
+	       List<ArmeMagique> armesMagiques = new ArrayList<ArmeMagique>();
+	       armesMagiques.add(baton);
+	       armesMagiques.add(feu);
+	       armesMagiques.add(glace);
+
+	       List<ArmeDistance> armesDistances = new ArrayList<ArmeDistance>();
+	       armesDistances.add(arc);
+	       armesDistances.add(arbalete);
+	       armesDistances.add(couteaux);
+
+	       List<Equipement> equipements = new ArrayList<Equipement>();
+	       equipements.add(bouclier);
+	       equipements.add(casque);
+	       equipements.add(cheval);
+	}
+
 
 }
