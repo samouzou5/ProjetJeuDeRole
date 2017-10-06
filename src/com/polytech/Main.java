@@ -43,14 +43,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		boolean arret = false;
-		System.out.println("Bienvenue dans le jeu de rôle \n");
+		System.out.println("\t\t\t\tBienvenue dans le jeu de rôle \n");
 		do {
-			System.out.println("********************************");
-			System.out.println("*************MENU***************");
-			System.out.println("********************************");
-			System.out.println("1. Règles du jeu");
-			System.out.println("2.Commencer le chargement de la partie");
-			System.out.println("3.Quitter");
+			System.out.println("\t\t\t\t********************************");
+			System.out.println("\t\t\t\t*************MENU***************");
+			System.out.println("\t\t\t\t********************************");
+			System.out.println("\t\t\t\t1. Règles du jeu");
+			System.out.println("\t\t\t\t2.Commencer le chargement de la partie");
+			System.out.println("\t\t\t\t3.Quitter");
+			System.out.println("\n");
 			System.out.print("Votre choix : ");
 			int choix_util = new Scanner(System.in).nextInt();
 			switch (choix_util) {
