@@ -3,8 +3,7 @@ package com.polytech;
 public abstract class Arme {
 	
 	private String nomArme;
-	private String typeArme;
-	private int degat;
+	private int degats;
 	
 	public String getNomArme() {
 		return nomArme;
@@ -14,27 +13,18 @@ public abstract class Arme {
 		this.nomArme = nomArme;
 	}
 	
-	public String getTypeArme() {
-		return typeArme;
+	public int getDegats() {
+		return degats;
 	}
 	
-	public void setTypeArme(String typeArme) {
-		this.typeArme = typeArme;
+	public void setDegats(int degat) {
+		this.degats = degat;
 	}
 	
-	public int getDegat() {
-		return degat;
-	}
-	
-	public void setDegat(int degat) {
-		this.degat = degat;
-	}
-	
-	public Arme(String nom, String type, int degat) {
+	public Arme(String nom, int degats) {
 		this.nomArme = nom;
-		this.typeArme = type;
-		this.degat = degat;
+		this.degats = degats;
 	}
 	
-	public abstract void attaquer();
+	abstract int attaquer();
 }

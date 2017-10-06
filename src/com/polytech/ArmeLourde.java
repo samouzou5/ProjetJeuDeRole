@@ -2,11 +2,27 @@ package com.polytech;
 
 public class ArmeLourde extends Arme {
 	
-	public ArmeLourde(String nom, String type, int degat) {
-		super(nom, type, degat);
+	private int vitesse;
+	
+	public int getVitesse() {
+		return vitesse;
+	}
+
+	public void setVitesse(int vitesse) {
+		this.vitesse = vitesse;
+	}
+
+	public ArmeLourde(String nom, int degats, int vitesse) {
+		super(nom, degats);
+		this.vitesse = vitesse;
 	}
 	
-	public void attaquer() {
+	public int attaquer() {
+		int nbInfliges = 0;
 		
+		// On renvoie le nombre de points de dégats
+		nbInfliges += super.getDegats();
+		
+		return nbInfliges;
 	}
 }
