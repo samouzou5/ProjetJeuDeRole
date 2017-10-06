@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
+	static List<Personnage> personnages = new ArrayList<Personnage>();
+    static List<ArmeLourde> armesLourdes = new ArrayList<ArmeLourde>();
+    static List<ArmeMagique> armesMagiques = new ArrayList<ArmeMagique>();
+    static List<ArmeDistance> armesDistances = new ArrayList<ArmeDistance>();
+    static List<Equipement> equipements = new ArrayList<Equipement>();
 	/*public static int afficherMenuPrincipal() {
 		Scanner s = new Scanner(System.in);
 		System.out.println("********************************");
@@ -69,6 +73,11 @@ public class Main {
 				System.out.println("BON JEU!");
 				System.out.println("\n");
 				System.out.println("\n");
+				//test
+				/*creerPersonnages();
+				for(Equipement e : equipements){
+					System.out.println(e.getPointsAttaque());
+				}*/
 				break;
 			case 2:
 				boolean quit = false;
@@ -157,7 +166,7 @@ public class Main {
 	       
 	       
 	       // Création des listes
-	       List<Personnage> personnages = new ArrayList<Personnage>();
+	       //List<Personnage> personnages = new ArrayList<Personnage>();
 	       personnages.add(gandalf);
 	       personnages.add(sarouman);
 	       personnages.add(legolas);
@@ -165,23 +174,23 @@ public class Main {
 	       personnages.add(bilbo);
 	       personnages.add(aragorn);
 
-	       List<ArmeLourde> armesLourdes = new ArrayList<ArmeLourde>();
+	       //List<ArmeLourde> armesLourdes = new ArrayList<ArmeLourde>();
 	       armesLourdes.add(epee);
 	       armesLourdes.add(hache);
 	       armesLourdes.add(fleau);
 	       armesLourdes.add(dague);
 
-	       List<ArmeMagique> armesMagiques = new ArrayList<ArmeMagique>();
+	       //List<ArmeMagique> armesMagiques = new ArrayList<ArmeMagique>();
 	       armesMagiques.add(baton);
 	       armesMagiques.add(feu);
 	       armesMagiques.add(glace);
 
-	       List<ArmeDistance> armesDistances = new ArrayList<ArmeDistance>();
+	       //List<ArmeDistance> armesDistances = new ArrayList<ArmeDistance>();
 	       armesDistances.add(arc);
 	       armesDistances.add(arbalete);
 	       armesDistances.add(couteaux);
 
-	       List<Equipement> equipements = new ArrayList<Equipement>();
+	       //List<Equipement> equipements = new ArrayList<Equipement>();
 	       equipements.add(bouclier);
 	       equipements.add(casque);
 	       equipements.add(cheval);
