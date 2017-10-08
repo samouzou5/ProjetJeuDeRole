@@ -12,6 +12,8 @@ public class Main {
 	static List<Equipement> equipements = new ArrayList<Equipement>();
 	static List<Personnage> perso_joueurs = new ArrayList<Personnage>();
 	static List<Integer> perso_choisi = new ArrayList<Integer>();
+	static List<Joueur>liste_joueurs = new ArrayList<Joueur>();
+	private static final int NB_JOUEURS = 2;
 	/*
 	 * public static int afficherMenuPrincipal() { Scanner s = new
 	 * Scanner(System.in);
@@ -76,36 +78,57 @@ public class Main {
 				boolean quit = false;
 				boolean replay = false;
 				boolean control = false;
-				int cpt = 1;
 				int choix_perso = -1;
 				creerPersonnages();
-				System.out.println("Choisissez un personnage parmi la liste ci-dessous :");
-				for (Personnage p : personnages) {
-					System.out.println(cpt + "-> " + "Nom : " + p.getNom() + "\n  Arme principale : "
-							+ p.getArmesPersonnages().get(1).getNomArme() + "\n  PV : " + p.getPointsVie() + "\n Tapez "
-							+ cpt + " pour le choisir");
-					cpt++;
-				}
-				do {
-					try {
-						System.out.print("Votre choix : ");
-						choix_perso = new Scanner(System.in).nextInt();
-						if (choix_perso >= 1 && choix_perso <= 6) {
-							if (perso_choisi.contains(choix_perso)) {
-								System.out.println("Ce personnage a déjà été choisi, veuillez en sélectionner un autre!");
-							} else {
-								perso_choisi.add(choix_perso);
-								System.out.println("Le joueur a choisi comme personnage : "  + personnages.get(choix_perso - 1).getNom());
-								control = true;
-							}
-						} else {
-							System.out.println("Mauvais choix! Veuillez effectuer un autre choix");
-						}
-
-					} catch (Exception e) {
-						System.out.println("Vous devez choisir un personnage entre 1 et 6");
+				for (int i = 1; i <= NB_JOUEURS; i++) {
+					Scanner sc = new Scanner(System.in);
+					System.out.println("Quel est votre nom ? ");
+					String nom = sc.nextLine();
+					liste_joueurs.add(new Joueur(nom,0,0,0));
+					System.out.println("\n");
+					int cpt = 1;
+					System.out.println("Bonjour " + nom + ",choisissez un personnage parmi la liste ci-dessous :");
+					for (Personnage p : personnages) {
+						System.out.println(cpt + "-> " + "Nom : " + p.getNom() + "\n  Arme principale : "
+								+ p.getArmesPersonnages().get(1).getNomArme() + "\n  PV : " + p.getPointsVie()
+								+ "\n Tapez " + cpt + " pour le choisir");
+						cpt++;
 					}
-				} while (!control);
+					do {
+						try {
+							System.out.print("Votre choix : ");
+							choix_perso = new Scanner(System.in).nextInt();
+							if (choix_perso >= 1 && choix_perso <= 6) {
+								if (perso_choisi.contains(choix_perso)) {
+									System.out.println(nom +
+											" ce personnage a déjà été choisi, veuillez en sélectionner un autre!");
+									control = false;
+								} else {
+									perso_choisi.add(choix_perso);
+									System.out.println("Le joueur " + nom + " a choisi comme personnage : "
+											+ personnages.get(choix_perso - 1).getNom());
+									control = true;
+								}
+							} else {
+								System.out.println("Mauvais choix! Veuillez effectuer un autre choix");
+							}
+
+						} catch (Exception e) {
+							System.out.println("Vous devez choisir un personnage entre 1 et 6");
+						}
+						System.out.println("Tapez une touche pour continuer");
+						new Scanner(System.in).nextLine();
+					} while (!control);
+				}
+				System.out.println("*********************************");
+				System.out.println("Récapitulatif!");
+				System.out.println("*********************************");
+				System.out.println("\n");
+				//int index = 0;
+				for(int k = 0; k < NB_JOUEURS ; k++){
+					System.out.println("Le joueur " + liste_joueurs.get(k).getNom() + " a choisi le personnage : " + personnages.get(k).getNom());
+				}
+				System.out.println("C'est l\'heure du duel");
 				/* fin du jeu possibilité de recommencer */
 				/*
 				 * do{ System.out.println("Voulez-vous recommencer? (o/n) : ");
