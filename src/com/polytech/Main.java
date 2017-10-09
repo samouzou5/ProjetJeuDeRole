@@ -61,7 +61,7 @@ public class Main {
 				System.out.println("Les règles du jeu sont très simples : ");
 				System.out.println("- une partie se joue obligatoirement avec 2 joueurs.");
 				System.out.println("- chaque joueur choisit un personnage ainsi qu'une arme et un équipement");
-				System.out.println("Une partie se déroule en 3 tours maximum avec 2 tours gagnants.");
+				System.out.println("Une partie se déroule en 3 parties maximum avec 2 parties gagnants.");
 				System.out.println(
 						"- Lors de l'attaque d'un personnage, le personnage adverse subit des dommages offensifs et défensifs.");
 				System.out.println(
