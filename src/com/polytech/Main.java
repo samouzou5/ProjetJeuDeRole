@@ -158,13 +158,13 @@ public class Main {
 						}
 
 						// On fait l'attaque + on demande l'arme
-						// AFFICHER LES MUNITIONS !!!!!!!!!!!!!!!!!!!
 						int cptArme;
 						for (int i = 0; i < attaquant.getArmesPersonnages().size(); i++) {
 							cptArme = i + 1;
 							Arme arme = attaquant.getArmesPersonnages().get(i);
 							System.out.println("Arme " + cptArme + " - " + arme.getNomArme() + " : " + arme.getDegats()
 									+ " dégats");
+							// AFFICHER LES MUNITIONS !!!!!!!!!!!!!!!!!!!
 						}
 						
 						int choix_arme = -1;
@@ -271,11 +271,6 @@ public class Main {
 			}
 		} while (!arret);
 
-	}
-
-	private static Arme Arme() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public static void creerPersonnages() {
