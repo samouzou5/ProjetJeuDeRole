@@ -71,13 +71,11 @@ public abstract class Personnage {
 		this.armesPersonnages.add(arme);
 	}
 
-	public int attaquerPerso(Personnage p) {
+	public int attaquerPerso(Personnage p, Arme a) {
 		int nbDegats = 0;
 
 		// On va chercher le nombre de points pour les armes
-		for (Arme arme : getArmesPersonnages()) {
-			nbDegats += arme.attaquer();
-		}
+		nbDegats += a.attaquer();
 
 		// On va chercher les points attaque de l'équipement
 		int pointsEquipementAttaque = getEquipement().getPointsAttaque();
@@ -108,5 +106,5 @@ public abstract class Personnage {
 		return false;
 	}
 
-	abstract void lancerAttaque(Personnage p);
+	abstract void lancerAttaque(Personnage p, Arme a);
 }

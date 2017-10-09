@@ -6,7 +6,14 @@ public class Joueur {
 	private int nbVictoires;
 	private int nbDefaites;
 	private int nbParties;
+	private Personnage personnage;
 	
+	public Personnage getPersonnage() {
+		return personnage;
+	}
+	public void setPersonnage(Personnage personnage) {
+		this.personnage = personnage;
+	}
 	public String getNom() {
 		return nom;
 	}
@@ -37,5 +44,17 @@ public class Joueur {
 		this.nbVictoires = nbVictoires;
 		this.nbDefaites = nbDefaites;
 		this.nbParties = nbParties;
+	}
+	
+	public void incrementerVictoires() {
+		this.nbVictoires++;
+	}
+	
+	public void incrementerDefaites() {
+		this.nbDefaites++;
+	}
+	
+	public void incrementerParties() {
+		this.nbParties++;
 	}
 }

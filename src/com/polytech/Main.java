@@ -12,7 +12,7 @@ public class Main {
 	static List<Equipement> equipements = new ArrayList<Equipement>();
 	static List<Personnage> perso_joueurs = new ArrayList<Personnage>();
 	static List<Integer> perso_choisi = new ArrayList<Integer>();
-	static List<Joueur>liste_joueurs = new ArrayList<Joueur>();
+	static List<Joueur> liste_joueurs = new ArrayList<Joueur>();
 	private static final int NB_JOUEURS = 2;
 	/*
 	 * public static int afficherMenuPrincipal() { Scanner s = new
@@ -79,15 +79,17 @@ public class Main {
 				boolean replay = false;
 				boolean control = false;
 				int choix_perso = -1;
+				Joueur joueur;
 				creerPersonnages();
 				for (int i = 1; i <= NB_JOUEURS; i++) {
 					Scanner sc = new Scanner(System.in);
 					System.out.println("Quel est votre nom ? ");
 					String nom = sc.nextLine();
-					liste_joueurs.add(new Joueur(nom,0,0,0));
+					joueur = new Joueur(nom, 0, 0, 0);
+					liste_joueurs.add(joueur);
 					System.out.println("\n");
 					int cpt = 1;
-					System.out.println("Bonjour " + nom + ",choisissez un personnage parmi la liste ci-dessous :");
+					System.out.println("Bonjour " + nom + ", choisissez un personnage parmi la liste ci-dessous :");
 					for (Personnage p : personnages) {
 						System.out.println(cpt + "-> " + "Nom : " + p.getNom() + "\n  Arme principale : "
 								+ p.getArmesPersonnages().get(1).getNomArme() + "\n  PV : " + p.getPointsVie()
@@ -100,13 +102,14 @@ public class Main {
 							choix_perso = new Scanner(System.in).nextInt();
 							if (choix_perso >= 1 && choix_perso <= 6) {
 								if (perso_choisi.contains(choix_perso)) {
-									System.out.println(nom +
-											" ce personnage a déjà été choisi, veuillez en sélectionner un autre!");
+									System.out.println(nom
+											+ " ce personnage a déjà été choisi, veuillez en sélectionner un autre!");
 									control = false;
 								} else {
 									perso_choisi.add(choix_perso);
 									System.out.println("Le joueur " + nom + " a choisi comme personnage : "
 											+ personnages.get(choix_perso - 1).getNom());
+									joueur.setPersonnage(personnages.get(choix_perso - 1));
 									control = true;
 								}
 							} else {
@@ -124,29 +127,155 @@ public class Main {
 				System.out.println("Récapitulatif!");
 				System.out.println("*********************************");
 				System.out.println("\n");
-				//int index = 0;
-				for(int k = 0; k < NB_JOUEURS ; k++){
-					System.out.println("Le joueur " + liste_joueurs.get(k).getNom() + " a choisi le personnage : " + personnages.get(k).getNom());
+				// int index = 0;
+				for (int k = 0; k < NB_JOUEURS; k++) {
+					System.out.println("Le joueur " + liste_joueurs.get(k).getNom() + " a choisi le personnage : "
+							+ personnages.get(k).getNom());
 				}
 				System.out.println("C'est l\'heure du duel");
-				/* fin du jeu possibilité de recommencer */
-				/*
-				 * do{ System.out.println("Voulez-vous recommencer? (o/n) : ");
-				 * String s = new Scanner(System.in).nextLine();
-				 * if(!s.equalsIgnoreCase("n") && !s.equalsIgnoreCase("o")){
-				 * quit = false; }else if(s.equalsIgnoreCase("n")){ quit = true;
-				 * System.out.println("Vous quittez le jeu!"); System.exit(0);
-				 * }else if(s.equalsIgnoreCase("o")){ replay = true; }
-				 * }while(!replay && !quit );
-				 */
+
+				boolean continuerMatch = true;
+
+				while (continuerMatch) {
+
+					// création d'une partie
+					Partie partie = new Partie();
+
+					// Initialisation des personnages attaqué et attaquant
+					Personnage premierPersonnage = liste_joueurs.get(0).getPersonnage();
+					Personnage secondPersonnage = liste_joueurs.get(1).getPersonnage();
+					
+					// On attribut les personnages attaquant et attaqué
+					Personnage attaquant = premierPersonnage;
+					Personnage attaque = secondPersonnage;
+					
+					System.out.println("C'est à " + attaquant.getNom() + " de commencer");
+
+					while (!premierPersonnage.getMort() && !secondPersonnage.getMort()) {
+
+						if (partie.getNbTours() > 0) {
+							System.out.println("Au tour de " + attaquant.getNom());
+						}
+
+						// On fait l'attaque + on demande l'arme
+						// AFFICHER LES MUNITIONS !!!!!!!!!!!!!!!!!!!
+						int cptArme;
+						for (int i = 0; i < attaquant.getArmesPersonnages().size(); i++) {
+							cptArme = i + 1;
+							Arme arme = attaquant.getArmesPersonnages().get(i);
+							System.out.println("Arme " + cptArme + " - " + arme.getNomArme() + " : " + arme.getDegats()
+									+ " dégats");
+						}
+						
+						int choix_arme = -1;
+						Arme arme_choisis = Arme();
+						control = false;
+						
+						do {
+							try {
+								System.out.println(attaquant.getNom() + ", choisissez votre arme : ");
+								choix_arme = new Scanner(System.in).nextInt();
+								
+								if (choix_arme >= 1 && choix_arme <= 2) {
+									
+										arme_choisis = attaquant.getArmesPersonnages().get(choix_arme - 1);
+										System.out.println("Le personnage " + attaquant.getNom() + " a choisi l'arme : " + arme_choisis.getNomArme());
+										control = true;
+									
+								} else {
+									System.out.println("Mauvais choix! Veuillez effectuer un autre choix");
+									control = false;
+								}
+
+							} catch (Exception e) {
+								System.out.println("Vous devez choisir une arme entre 1 et 2");
+							}
+
+							// System.out.println("Tapez une touche pour continuer");
+							// new Scanner(System.in).nextLine();
+
+						} while (!control);
+						
+						// On lance l'attaque
+						attaquant.lancerAttaque(attaque, arme_choisis);
+						
+						// Incrémentation du tour
+						partie.incrementerTour();
+
+						// Attaquant et attaqué inversent
+						Personnage bufferAttaquant;
+						bufferAttaquant = attaquant;
+						attaquant = attaque;
+						attaque = bufferAttaquant;					
+					}
+
+					// On récapitule la partie
+					System.out.println(attaquant.getNom() + " a gagné la partie en " + partie.getNbTours() + " tours");
+					
+					// Incrementer victoire, défaite et partie
+					liste_joueurs.get(0).incrementerParties();
+					liste_joueurs.get(1).incrementerParties();
+					
+					// Incrémenter victoire et défaites
+					if(liste_joueurs.get(0).getPersonnage().getMort()) {
+						liste_joueurs.get(0).incrementerDefaites();
+						liste_joueurs.get(1).incrementerVictoires();
+					} else {
+						liste_joueurs.get(0).incrementerVictoires();
+						liste_joueurs.get(1).incrementerDefaites();
+					}
+
+					// Premier et second personnages inversent
+					Personnage bufferPremier;
+					bufferPremier = premierPersonnage;
+					premierPersonnage = secondPersonnage;
+					secondPersonnage = bufferPremier;
+					
+					premierPersonnage.setPointsVie(100);
+					secondPersonnage.setPointsVie(100);
+					
+					// Remettre les munitions et mana par défaut !!!!!!!!
+					
+					if (liste_joueurs.get(0).getNbVictoires() >= 2 || liste_joueurs.get(1).getNbVictoires() >= 2) {
+						continuerMatch = false;
+						
+						/*
+						 * fin du jeu possibilité de recommencer un match (2-3 parties)
+						 */
+						do {
+							System.out.println("Voulez-vous recommencer? (o/n) : ");
+							String s = new Scanner(System.in).nextLine();
+
+							if (!s.equalsIgnoreCase("n") && !s.equalsIgnoreCase("o")) {
+								quit = false;
+
+							} else if (s.equalsIgnoreCase("n")) {
+								quit = true;
+								System.out.println("Vous quittez le jeu!");
+								System.exit(0);
+
+							} else if (s.equalsIgnoreCase("o")) {
+								replay = true;
+								continuerMatch = true;
+							}
+						} while (!replay && !quit);
+					}
+				}
+
 				break;
 			case 3:
 				arret = true;
-				System.out.println("Merci d'avoir participé au jeu, au revoir!");
+				System.out.println("Merci d'avoir participé au jeu, au revoir !");
 				System.exit(0);
 				break;
 			}
 		} while (!arret);
+
+	}
+
+	private static Arme Arme() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public static void creerPersonnages() {
