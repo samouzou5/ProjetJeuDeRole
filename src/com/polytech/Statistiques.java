@@ -26,18 +26,18 @@ public class Statistiques extends javax.swing.JFrame {
 
 	public static void creerPersonnages() {
 		// Création des Armes
-		ArmeDistance arc = new ArmeDistance("Arc", 8, 10);
-		ArmeDistance arbalete = new ArmeDistance("Arbalète", 6, 15);
-		ArmeDistance couteaux = new ArmeDistance("Couteaux de lancer", 4, 5);
+		ArmeDistance arc = new ArmeDistance("Arc", 8);
+		ArmeDistance arbalete = new ArmeDistance("Arbalète", 6);
+		ArmeDistance couteaux = new ArmeDistance("Couteaux de lancer", 4);
 
 		ArmeLourde epee = new ArmeLourde("Épée", 3, 15);
 		ArmeLourde hache = new ArmeLourde("Hache", 1, 15);
 		ArmeLourde fleau = new ArmeLourde("Fleau", 2, 15);
 		ArmeLourde dague = new ArmeLourde("Dague", 4, 4);
 
-		ArmeMagique baton = new ArmeMagique("Bâton magique", 8, 10);
-		ArmeMagique feu = new ArmeMagique("Boules de feu", 8, 10);
-		ArmeMagique glace = new ArmeMagique("Boules de glace", 8, 10);
+		ArmeMagique baton = new ArmeMagique("Bâton magique", 8);
+		ArmeMagique feu = new ArmeMagique("Boules de feu", 8);
+		ArmeMagique glace = new ArmeMagique("Boules de glace", 8);
 
 		// Création des Equipements
 		Equipement bouclier = new Equipement("Bouclier", 0, 6);
