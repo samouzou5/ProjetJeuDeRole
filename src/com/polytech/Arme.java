@@ -26,5 +26,9 @@ public abstract class Arme {
 		this.degats = degats;
 	}
 	
+	public Arme() {
+		
+	}
+	
 	abstract int attaquer();
 }
