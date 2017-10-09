@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-	static List<Personnage> personnages = new ArrayList<Personnage>();
-	static List<ArmeLourde> armesLourdes = new ArrayList<ArmeLourde>();
-	static List<ArmeMagique> armesMagiques = new ArrayList<ArmeMagique>();
-	static List<ArmeDistance> armesDistances = new ArrayList<ArmeDistance>();
-	static List<Equipement> equipements = new ArrayList<Equipement>();
-	static List<Personnage> perso_joueurs = new ArrayList<Personnage>();
-	static List<Integer> perso_choisi = new ArrayList<Integer>();
-	static List<Joueur>liste_joueurs = new ArrayList<Joueur>();
+	private static List<Personnage> personnages = new ArrayList<Personnage>();
+	private static List<ArmeLourde> armesLourdes = new ArrayList<ArmeLourde>();
+	private static List<ArmeMagique> armesMagiques = new ArrayList<ArmeMagique>();
+	private static List<ArmeDistance> armesDistances = new ArrayList<ArmeDistance>();
+	private static List<Equipement> equipements = new ArrayList<Equipement>();
+	private static List<Personnage> perso_joueurs = new ArrayList<Personnage>();
+	private static List<Integer> perso_choisi = new ArrayList<Integer>();
+	private static List<Joueur>liste_joueurs = new ArrayList<Joueur>();
 	private static final int NB_JOUEURS = 2;
 	/*
 	 * public static int afficherMenuPrincipal() { Scanner s = new
