@@ -21,14 +21,16 @@ public abstract class Arme {
 		this.degats = degat;
 	}
 	
+	public Arme() {
+		
+	}
+	
 	public Arme(String nom, int degats) {
 		this.nomArme = nom;
 		this.degats = degats;
 	}
 	
-	public Arme() {
-		
-	}
-	
 	abstract int attaquer();
+	
+	abstract void remiseAZero();
 }

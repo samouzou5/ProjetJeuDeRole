@@ -71,6 +71,10 @@ public abstract class Personnage {
 		this.armesPersonnages.add(arme);
 	}
 
+	public void setArmesPersonnages(List<Arme> armesPersonnages) {
+		this.armesPersonnages = armesPersonnages;
+	}
+
 	public int attaquerPerso(Personnage p, Arme a) {
 		int nbDegats = 0;
 

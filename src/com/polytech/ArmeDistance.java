@@ -5,6 +5,7 @@ import java.util.Random;
 public class ArmeDistance extends Arme {
 
 	private int nbFleches;
+	private final static int NB_FLECHES_DEBUT = 10;
 
 	public int getNbFleches() {
 		return nbFleches;
@@ -14,9 +15,13 @@ public class ArmeDistance extends Arme {
 		this.nbFleches = nbFleches;
 	}
 
-	public ArmeDistance(String nom, int degat, int nbFleches) {
+	public ArmeDistance(String nom, int degat) {
 		super(nom, degat);
-		this.nbFleches = nbFleches;
+		this.nbFleches = NB_FLECHES_DEBUT;
+	}
+	
+	public void remiseAZero() {
+		this.nbFleches = NB_FLECHES_DEBUT;
 	}
 	
 	/**

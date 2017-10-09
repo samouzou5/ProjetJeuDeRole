@@ -3,6 +3,7 @@ package com.polytech;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 public class Main {
 	private static List<Personnage> personnages = new ArrayList<Personnage>();
@@ -162,13 +163,26 @@ public class Main {
 						for (int i = 0; i < attaquant.getArmesPersonnages().size(); i++) {
 							cptArme = i + 1;
 							Arme arme = attaquant.getArmesPersonnages().get(i);
-							System.out.println("Arme " + cptArme + " - " + arme.getNomArme() + " : " + arme.getDegats()
-									+ " dégats");
-							// AFFICHER LES MUNITIONS !!!!!!!!!!!!!!!!!!!
+							int munitions = 0;
+							
+							if(arme instanceof ArmeDistance) {
+								System.out.println("Arme " + cptArme + " - " + arme.getNomArme() + " : " + arme.getDegats()
+								+ " dégats - " + munitions + " flèches");
+							}
+							
+							if(arme instanceof ArmeMagique) {
+								munitions = ((ArmeMagique) arme).getNbMana();
+								System.out.println("Arme " + cptArme + " - " + arme.getNomArme() + " : " + arme.getDegats()
+								+ " dégats - " + munitions + " de mana");
+							}
+							
+							if(arme instanceof ArmeLourde) {
+								System.out.println("Arme " + cptArme + " - " + arme.getNomArme() + " : " + arme.getDegats()
+								+ " dégats");
+							}
 						}
 						
 						int choix_arme = -1;
-						Arme arme_choisis = new Arme();
 						control = false;
 						
 						do {
@@ -176,10 +190,16 @@ public class Main {
 								System.out.println(attaquant.getNom() + ", choisissez votre arme : ");
 								choix_arme = new Scanner(System.in).nextInt();
 								
+								Arme arme_choisie;
+								
 								if (choix_arme >= 1 && choix_arme <= 2) {
 									
-										arme_choisis = attaquant.getArmesPersonnages().get(choix_arme - 1);
-										System.out.println("Le personnage " + attaquant.getNom() + " a choisi l'arme : " + arme_choisis.getNomArme());
+										arme_choisie = attaquant.getArmesPersonnages().get(choix_arme - 1);
+										System.out.println("Le personnage " + attaquant.getNom() + " a choisi l'arme : " + arme_choisie.getNomArme());
+										
+										// On lance l'attaque
+										attaquant.lancerAttaque(attaque, arme_choisie);
+										
 										control = true;
 									
 								} else {
@@ -195,9 +215,6 @@ public class Main {
 							// new Scanner(System.in).nextLine();
 
 						} while (!control);
-						
-						// On lance l'attaque
-						attaquant.lancerAttaque(attaque, arme_choisis);
 						
 						// Incrémentation du tour
 						partie.incrementerTour();
@@ -234,7 +251,14 @@ public class Main {
 					premierPersonnage.setPointsVie(100);
 					secondPersonnage.setPointsVie(100);
 					
-					// Remettre les munitions et mana par défaut !!!!!!!!
+					// Remettre les munitions et mana par défaut (cas ArmeDistance et ArmeMagique)
+					for(Arme arme : premierPersonnage.getArmesPersonnages()) {
+						arme.remiseAZero();
+					}
+					
+					for(Arme arme : secondPersonnage.getArmesPersonnages()) {
+						arme.remiseAZero();
+					}
 					
 					if (liste_joueurs.get(0).getNbVictoires() >= 2 || liste_joueurs.get(1).getNbVictoires() >= 2) {
 						continuerMatch = false;
@@ -251,6 +275,7 @@ public class Main {
 
 							} else if (s.equalsIgnoreCase("n")) {
 								quit = true;
+								continuerMatch = false;
 								System.out.println("Vous quittez le jeu!");
 								System.exit(0);
 
@@ -275,18 +300,18 @@ public class Main {
 
 	public static void creerPersonnages() {
 		// Création des Armes
-		ArmeDistance arc = new ArmeDistance("Arc", 8, 10);
-		ArmeDistance arbalete = new ArmeDistance("Arbalète", 6, 15);
-		ArmeDistance couteaux = new ArmeDistance("Couteaux de lancer", 4, 5);
+		ArmeDistance arc = new ArmeDistance("Arc", 8);
+		ArmeDistance arbalete = new ArmeDistance("Arbalète", 6);
+		ArmeDistance couteaux = new ArmeDistance("Couteaux de lancer", 4);
 
 		ArmeLourde epee = new ArmeLourde("Épée", 3, 15);
 		ArmeLourde hache = new ArmeLourde("Hache", 1, 15);
 		ArmeLourde fleau = new ArmeLourde("Fleau", 2, 15);
 		ArmeLourde dague = new ArmeLourde("Dague", 4, 4);
 
-		ArmeMagique baton = new ArmeMagique("Bâton magique", 8, 10);
-		ArmeMagique feu = new ArmeMagique("Boules de feu", 8, 10);
-		ArmeMagique glace = new ArmeMagique("Boules de glace", 8, 10);
+		ArmeMagique baton = new ArmeMagique("Bâton magique", 8);
+		ArmeMagique feu = new ArmeMagique("Boules de feu", 8);
+		ArmeMagique glace = new ArmeMagique("Boules de glace", 8);
 
 		// Création des Equipements
 		Equipement bouclier = new Equipement("Bouclier", 0, 6);
@@ -357,6 +382,14 @@ public class Main {
 		equipements.add(bouclier);
 		equipements.add(casque);
 		equipements.add(cheval);
+	}
+	
+	public static void supprimerListes() {
+		personnages.clear();
+		armesLourdes.clear();
+		armesMagiques.clear();
+		armesDistances.clear();
+		equipements.clear();
 	}
 
 }

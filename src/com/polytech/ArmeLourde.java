@@ -25,4 +25,8 @@ public class ArmeLourde extends Arme {
 		
 		return nbInfliges;
 	}
+	
+	public void remiseAZero() {
+		
+	}
 }

@@ -5,6 +5,7 @@ import java.util.Random;
 public class ArmeMagique extends Arme {
 	
 	private int nbMana;
+	private final static int NB_MANA_DEBUT = 10;
 	
 	public int getNbMana() {
 		return nbMana;
@@ -14,9 +15,13 @@ public class ArmeMagique extends Arme {
 		this.nbMana = nbMana;
 	}
 
-	public ArmeMagique(String nom, int degat, int nbMana) {
+	public ArmeMagique(String nom, int degat) {
 		super(nom, degat);
-		this.nbMana = nbMana;
+		this.nbMana = NB_MANA_DEBUT;
+	}
+	
+	public void remiseAZero() {
+		this.nbMana = NB_MANA_DEBUT;
 	}
 	
 	public int attaquer() {
