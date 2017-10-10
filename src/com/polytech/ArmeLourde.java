@@ -17,6 +17,9 @@ public class ArmeLourde extends Arme {
 		this.vitesse = vitesse;
 	}
 	
+	/**
+	 * Renvoie les dégats liés à une arme lourde
+	 */
 	public int attaquer() {
 		int nbInfliges = 0;
 		

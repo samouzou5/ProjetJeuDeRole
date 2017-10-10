@@ -67,6 +67,10 @@ public abstract class Personnage {
 		this.niveau = niveau;
 	}
 
+	/**
+	 * Méthode d'ajout d'une arme utilisée lors de la création des personnages
+	 * @param arme
+	 */
 	public void ajouterArme(Arme arme) {
 		this.armesPersonnages.add(arme);
 	}
@@ -75,6 +79,13 @@ public abstract class Personnage {
 		this.armesPersonnages = armesPersonnages;
 	}
 
+	/**
+	 * Calcul des points de dégats d'une attaque sur un personnage
+	 * Va chercher les points générés pour l'arme dans la classe arme
+	 * @param p
+	 * @param a
+	 * @return
+	 */
 	public int attaquerPerso(Personnage p, Arme a) {
 		int nbDegats = 0;
 
@@ -102,6 +113,10 @@ public abstract class Personnage {
 		return nbDegats;
 	}
 	
+	/**
+	 * Permet de savoir si un personnage est mort ou en vie
+	 * @return
+	 */
 	public boolean getMort() {
 		if(this.pointsVie <= 0) {
 			return true;

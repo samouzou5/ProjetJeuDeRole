@@ -24,13 +24,17 @@ public class ArmeMagique extends Arme {
 		this.nbMana = NB_MANA_DEBUT;
 	}
 	
+	/**
+	 * Renvoie les dégats liés à une arme magique
+	 * Le nombre de points de mana utilisés est aléatoire
+	 */
 	public int attaquer() {
 		
 		int nbInfliges = 0;
 
-		// Quantite de mana entre 1 et 10;
+		// Quantite de mana entre 1 et 2;
 		Random randomMana = new Random();
-		int quantiteManaLancee = randomMana.nextInt(2) + 1;
+		int quantiteManaLancee = randomMana.nextInt(1) + 1;
 
 		// Si on a pas assez de flèches on envoie les flèches restantes
 		if (this.nbMana < quantiteManaLancee) {

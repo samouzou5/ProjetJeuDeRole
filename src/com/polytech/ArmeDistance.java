@@ -20,12 +20,16 @@ public class ArmeDistance extends Arme {
 		this.nbFleches = NB_FLECHES_DEBUT;
 	}
 	
+	/**
+	 * On remet les flèches à zéro à la fin d'un combat
+	 */
 	public void remiseAZero() {
 		this.nbFleches = NB_FLECHES_DEBUT;
 	}
 	
 	/**
-	 * 
+	 * Renvoie les dégats liés à une arme distance
+	 * Le nombre de flèches est aléatoire
 	 */
 	public int attaquer() {
 		int nbInfliges = 0;

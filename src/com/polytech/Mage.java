@@ -6,6 +6,9 @@ public class Mage extends Personnage {
 		super(nom, pointsVie, vitesse, niveau);
 	}
 	
+	/**
+	 * Affichage de l'attaque
+	 */
 	public void lancerAttaque(Personnage p, Arme a) {
 		System.out.println("Le mage " + this.getNom() + " attaque " + p.getNom());
 		
