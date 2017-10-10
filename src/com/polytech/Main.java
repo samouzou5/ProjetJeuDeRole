@@ -53,6 +53,7 @@ public class Main {
 			System.out.println("\t\t\t\t1. Règles du jeu");
 			System.out.println("\t\t\t\t2.Commencer le chargement de la partie");
 			System.out.println("\t\t\t\t3.Quitter");
+			System.out.println("\t\t\t\t4.Statistiques personnages");
 			System.out.println("\n");
 			System.out.print("Votre choix : ");
 			int choix_util = new Scanner(System.in).nextInt();
@@ -292,6 +293,11 @@ public class Main {
 				arret = true;
 				System.out.println("Merci d'avoir participé au jeu, au revoir !");
 				System.exit(0);
+				break;
+			case 4:
+				Statistiques s = new Statistiques();
+				s.setAlwaysOnTop(true);
+				s.setVisible(true);
 				break;
 			}
 		} while (!arret);

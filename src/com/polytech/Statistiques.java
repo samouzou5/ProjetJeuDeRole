@@ -124,7 +124,7 @@ public class Statistiques extends javax.swing.JFrame {
 	private void initComponents() {
 		setTitle("Statistiques personnages");
 		creerPersonnages();
-		System.out.println(personnages.size());
+		//System.out.println(personnages.size());
 		String[] noms_perso = new String[personnages.size()];
 		for (int i = 0; i < personnages.size(); i++) {
 			noms_perso[i] = personnages.get(i).getNom();
@@ -146,7 +146,7 @@ public class Statistiques extends javax.swing.JFrame {
 		jLabel12 = new javax.swing.JLabel();
 		jLabel14 = new javax.swing.JLabel();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 		jLabel1.setText("Statistiques personnages");
