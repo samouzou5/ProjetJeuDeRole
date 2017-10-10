@@ -44,7 +44,10 @@ public class Main {
 	 */
 
 	public static void main(String[] args) {
-		boolean arret = false;
+		boolean arret = false; 
+		boolean controle_choix = false;
+		int choix_util = -1;
+		//Menu principal du jeu
 		System.out.println("\t\t\t\tBienvenue dans le jeu de rôle \n");
 		do {
 			System.out.println("\t\t\t\t********************************");
@@ -55,8 +58,22 @@ public class Main {
 			System.out.println("\t\t\t\t3.Quitter");
 			System.out.println("\t\t\t\t4.Statistiques personnages");
 			System.out.println("\n");
-			System.out.print("Votre choix : ");
-			int choix_util = new Scanner(System.in).nextInt();
+			do{
+				System.out.print("Votre choix : ");//l'utilisateur doit effectuer son choix
+				try{
+					choix_util = new Scanner(System.in).nextInt();
+				controle_choix = true;
+				if(choix_util < 1 || choix_util > 4){
+					controle_choix = false;
+					choix_util = -1;
+					System.out.println("Votre choix est invalide! Veuillez réessayer!");
+				}
+				}catch(Exception e){
+					controle_choix = false;
+					choix_util = -1;
+					System.out.println("Votre choix est invalide! Veuillez réessayer!");
+				}
+			}while(choix_util == -1 || !controle_choix);
 			switch (choix_util) {
 			case 1:
 				System.out.println("Les règles du jeu sont très simples : ");
@@ -77,10 +94,10 @@ public class Main {
 				 */
 				break;
 			case 2:
-				boolean quit = false;
-				boolean replay = false;
-				boolean control = false;
-				int choix_perso = -1;
+				boolean quit = false; //booleen de controle pour quitter la partie
+				boolean replay = false;//booleen de controle pour rejouer la partie
+				boolean control = false;//booleen de controle dans les boucles
+				int choix_perso = -1;//choix utilisateur
 				Joueur joueur;
 				creerPersonnages();
 				for (int i = 1; i <= NB_JOUEURS; i++) {
