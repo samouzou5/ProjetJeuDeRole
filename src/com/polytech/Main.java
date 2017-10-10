@@ -6,15 +6,16 @@ import java.util.Scanner;
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 public class Main {
+	//Liste des arraylists nécessaires pour le jeu
 	private static List<Personnage> personnages = new ArrayList<Personnage>();
 	private static List<ArmeLourde> armesLourdes = new ArrayList<ArmeLourde>();
 	private static List<ArmeMagique> armesMagiques = new ArrayList<ArmeMagique>();
 	private static List<ArmeDistance> armesDistances = new ArrayList<ArmeDistance>();
 	private static List<Equipement> equipements = new ArrayList<Equipement>();
-	private static List<Personnage> perso_joueurs = new ArrayList<Personnage>();
+	//private static List<Personnage> perso_joueurs = new ArrayList<Personnage>();
 	private static List<Integer> perso_choisi = new ArrayList<Integer>();
 	private static List<Joueur>liste_joueurs = new ArrayList<Joueur>();
-	private static final int NB_JOUEURS = 2;
+	private static final int NB_JOUEURS = 2;//constante qui permet de rendre le jeu multijoueur
 	/*
 	 * public static int afficherMenuPrincipal() { Scanner s = new
 	 * Scanner(System.in);
@@ -58,6 +59,7 @@ public class Main {
 			System.out.println("\t\t\t\t3.Quitter");
 			System.out.println("\t\t\t\t4.Statistiques personnages");
 			System.out.println("\n");
+			//boucle pour gérer les mauvaises saisies de l'utilisateur
 			do{
 				System.out.print("Votre choix : ");//l'utilisateur doit effectuer son choix
 				try{
@@ -74,6 +76,7 @@ public class Main {
 					System.out.println("Votre choix est invalide! Veuillez réessayer!");
 				}
 			}while(choix_util == -1 || !controle_choix);
+			//selon le choix entré on va dans une section spécifique : règles du jeu, le jeu, quitter ou une interface graphique sur les stats des perso du jeu
 			switch (choix_util) {
 			case 1:
 				System.out.println("Les règles du jeu sont très simples : ");
@@ -109,12 +112,13 @@ public class Main {
 					System.out.println("\n");
 					int cpt = 1;
 					System.out.println("Bonjour " + nom + ", choisissez un personnage parmi la liste ci-dessous :");
-					for (Personnage p : personnages) {
+					for (Personnage p : personnages) {//affichage de la liste des personnages
 						System.out.println(cpt + "-> " + "Nom : " + p.getNom() + "\n  Arme principale : "
 								+ p.getArmesPersonnages().get(1).getNomArme() + "\n  PV : " + p.getPointsVie()
 								+ "\n Tapez " + cpt + " pour le choisir");
 						cpt++;
 					}
+					//controle du choix des personnages (2 personnes ne peuvent choisir le même joueur)
 					do {
 						try {
 							System.out.print("Votre choix : ");
@@ -142,6 +146,7 @@ public class Main {
 						new Scanner(System.in).nextLine();
 					} while (!control);
 				}
+				//récapitulatif des choix des 2 joueurs
 				System.out.println("*********************************");
 				System.out.println("Récapitulatif!");
 				System.out.println("*********************************");
